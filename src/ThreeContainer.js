@@ -61,107 +61,107 @@ function Controls() {
   );
 }
 
-function Box({ history }) {
-  // const [ref, api] = useBox(() => ({ mass: 1, position: [200, 2, 0] }));
-  // const history = useHistory();
-  // console.log("history in box", history);
-  const boxRef = useRef(null);
+// function Box({ history }) {
+//   // const [ref, api] = useBox(() => ({ mass: 1, position: [200, 2, 0] }));
+//   // const history = useHistory();
+//   // console.log("history in box", history);
+//   const boxRef = useRef(null);
 
-  let canGoForward = true;
-  let comeback = true;
-  let allowBack = true;
-  let secondLeft = false;
-  let secondReverse = false;
-  let mandirRight = false;
-  let back2normal = false;
-  useFrame(() => {
-    console.log("Box: ", boxRef.current.position);
-    let z_cord = boxRef.current.position.z;
-    let x_cord = boxRef.current.position.x;
+//   let canGoForward = true;
+//   let comeback = true;
+//   let allowBack = true;
+//   let secondLeft = false;
+//   let secondReverse = false;
+//   let mandirRight = false;
+//   let back2normal = false;
+//   useFrame(() => {
+//     console.log("Box: ", boxRef.current.position);
+//     let z_cord = boxRef.current.position.z;
+//     let x_cord = boxRef.current.position.x;
 
-    if (z_cord < 230 && z_cord >= 60 && allowBack && !secondReverse) {
-      boxRef.current.position.z += 0.5;
-      console.log("Straight");
-    }
+//     if (z_cord < 230 && z_cord >= 60 && allowBack && !secondReverse) {
+//       boxRef.current.position.z += 0.5;
+//       console.log("Straight");
+//     }
 
-    if (z_cord >= 230 && z_cord <= 330 && comeback) {
-      boxRef.current.position.x -= 0.2;
-      boxRef.current.position.z += 0.5;
-      console.log("Slant");
-    }
+//     if (z_cord >= 230 && z_cord <= 330 && comeback) {
+//       boxRef.current.position.x -= 0.2;
+//       boxRef.current.position.z += 0.5;
+//       console.log("Slant");
+//     }
 
-    if (z_cord > 328 && x_cord > 160) {
-      comeback = false;
-      boxRef.current.position.x -= 0.5;
-      // boxRef.current.position.z -= 0.7;
-      console.log("left");
-      // canGoForward = false;
-    }
+//     if (z_cord > 328 && x_cord > 160) {
+//       comeback = false;
+//       boxRef.current.position.x -= 0.5;
+//       // boxRef.current.position.z -= 0.7;
+//       console.log("left");
+//       // canGoForward = false;
+//     }
 
-    if (x_cord <= 160 && x_cord > -90 && !secondLeft) {
-      console.log("Left Up");
-      boxRef.current.position.z -= 0.2;
-      boxRef.current.position.x -= 0.5;
-    }
+//     if (x_cord <= 160 && x_cord > -90 && !secondLeft) {
+//       console.log("Left Up");
+//       boxRef.current.position.z -= 0.2;
+//       boxRef.current.position.x -= 0.5;
+//     }
 
-    if (x_cord <= -90 && z_cord > 140) {
-      console.log("reverse");
-      allowBack = false;
-      secondLeft = true;
-      boxRef.current.position.z -= 0.5;
-    }
-    if (z_cord <= 140 && x_cord < 105 && secondLeft) {
-      console.log("right");
-      boxRef.current.position.x += 0.5;
-      if (x_cord > 104) secondReverse = true;
-    }
+//     if (x_cord <= -90 && z_cord > 140) {
+//       console.log("reverse");
+//       allowBack = false;
+//       secondLeft = true;
+//       boxRef.current.position.z -= 0.5;
+//     }
+//     if (z_cord <= 140 && x_cord < 105 && secondLeft) {
+//       console.log("right");
+//       boxRef.current.position.x += 0.5;
+//       if (x_cord > 104) secondReverse = true;
+//     }
 
-    if (z_cord < 260 && secondReverse && z_cord > 10 && !back2normal) {
-      console.log("second reverse");
-      boxRef.current.position.z -= 0.6;
-      if (z_cord > 9) mandirRight = true;
-    }
+//     if (z_cord < 260 && secondReverse && z_cord > 10 && !back2normal) {
+//       console.log("second reverse");
+//       boxRef.current.position.z -= 0.6;
+//       if (z_cord > 9) mandirRight = true;
+//     }
 
-    if (z_cord <= 10 && mandirRight && x_cord <= 240 && !back2normal) {
-      console.log("mandir right");
-      boxRef.current.position.x += 0.5;
-      if (x_cord > 239) back2normal = true;
-    }
+//     if (z_cord <= 10 && mandirRight && x_cord <= 240 && !back2normal) {
+//       console.log("mandir right");
+//       boxRef.current.position.x += 0.5;
+//       if (x_cord > 239) back2normal = true;
+//     }
 
-    if (x_cord >= 240 && z_cord <= 60 && back2normal) {
-      boxRef.current.position.x -= 0.5;
-      boxRef.current.position.z += 0.5;
-      console.log("back to normal");
-    }
+//     if (x_cord >= 240 && z_cord <= 60 && back2normal) {
+//       boxRef.current.position.x -= 0.5;
+//       boxRef.current.position.z += 0.5;
+//       console.log("back to normal");
+//     }
 
-    // if (z_cord < 60) {
-    //   canGoForward = true;
-    // }
+//     // if (z_cord < 60) {
+//     //   canGoForward = true;
+//     // }
 
-    // if (canGoForward) {
-    //   boxRef.current.position.z += 0.5;
-    // } else {
-    //   boxRef.current.position.z -= 0.5;
-    // }
-  });
+//     // if (canGoForward) {
+//     //   boxRef.current.position.z += 0.5;
+//     // } else {
+//     //   boxRef.current.position.z -= 0.5;
+//     // }
+//   });
 
-  return (
-    <mesh
-      onClick={() => {
-        // api.velocity.set(0, 2, 0);
-        // console.log("dard", history);
-        history.push("/events/vsm");
-      }}
-      ref={boxRef}
-      position={[260, 1, 60]}
-      scale={[10, 10, 10]}
-      castShadow
-    >
-      <boxBufferGeometry attach="geometry" />
-      <meshLambertMaterial attach="material" color="hotpink" />
-    </mesh>
-  );
-}
+//   return (
+//     <mesh
+//       onClick={() => {
+//         // api.velocity.set(0, 2, 0);
+//         // console.log("dard", history);
+//         history.push("/events/vsm");
+//       }}
+//       ref={boxRef}
+//       position={[260, 1, 60]}
+//       scale={[10, 10, 10]}
+//       castShadow
+//     >
+//       <boxBufferGeometry attach="geometry" />
+//       <meshLambertMaterial attach="material" color="hotpink" />
+//     </mesh>
+//   );
+// }
 
 const ThreeContainer = ({ loading, setLoading }) => {
   // College Entrance
@@ -642,7 +642,7 @@ const ThreeContainer = ({ loading, setLoading }) => {
           {/* <RectArealightWithHelper /> */}
           <Physics>
             <Model setLoading={setLoading} />
-            <Box />
+            {/* <Box /> */}
             <ContactShadows
               opacity={1}
               width={1}
