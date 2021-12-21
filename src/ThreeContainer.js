@@ -8,7 +8,7 @@ import { Sky, Cloud } from "@react-three/drei";
 // import Model2 from "./Followpathdemo";
 
 // import Model from "./Compressed_newcollege";
-import Model from "./Compressed_withgatelogo";
+import Model from "./Compressed_complete";
 
 // Styles
 import "./ThreeContainer.scss";
@@ -568,24 +568,33 @@ const ThreeContainer = ({ loading, setLoading }) => {
             distance={50}
             color={"#ffe692"}
           /> */}
-          {/* <pointLight
+          <pointLight
             intensity={2}
-            position={[135, 10, 240]}
+            // {x: , y: , z: }
+            position={[
+              34.75474947893146, 21.221160500310788, -137.56270390203377,
+            ]}
+            distance={200}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={2}
+            // {x: , y: , z: }
+            position={[
+              318.03093036707776, 21.221160500310788, -194.96146833410603,
+            ]}
             distance={100}
             color={"#ffe692"}
-          /> */}
-          {/* <pointLight
+          />
+          <pointLight
             intensity={2}
-            position={[165, 10, 260]}
-            distance={50}
-            color={"#ffe692"}
-          /> */}
-          {/* <pointLight
-            intensity={2}
-            position={[195, 10, 280]}
+            // x: , y: , z:
+            position={[
+              478.9114799442708, 21.221160500310788, -319.6847497598535,
+            ]}
             distance={100}
             color={"#ffe692"}
-          /> */}
+          />
 
           {/** Test lights */}
           <pointLight
