@@ -5,8 +5,10 @@ import { Physics } from "@react-three/cannon";
 import { ContactShadows, MapControls, softShadows } from "@react-three/drei";
 import { Sky, Cloud } from "@react-three/drei";
 
+// import Model2 from "./Followpathdemo";
+
 // import Model from "./Compressed_newcollege";
-import Model from "./Compressed_newcollege6";
+import Model from "./Compressed_withgatelogo";
 
 // Styles
 import "./ThreeContainer.scss";
@@ -28,17 +30,17 @@ function Controls() {
   const camera = useThree((state) => state.camera);
   const controlsRef = useRef();
 
-  useEffect(() => {
-    var minPan = new THREE.Vector3(-100, -2, -300);
-    var maxPan = new THREE.Vector3(500, 2, 400);
-    var _v = new THREE.Vector3();
-    controlsRef.current.addEventListener("change", function () {
-      _v.copy(this.target);
-      this.target.clamp(minPan, maxPan);
-      _v.sub(this.target);
-      camera.position.sub(_v);
-    });
-  }, []);
+  // useEffect(() => {
+  //   var minPan = new THREE.Vector3(-100, -2, -300);
+  //   var maxPan = new THREE.Vector3(500, 2, 400);
+  //   var _v = new THREE.Vector3();
+  //   controlsRef.current.addEventListener("change", function () {
+  //     _v.copy(this.target);
+  //     this.target.clamp(minPan, maxPan);
+  //     _v.sub(this.target);
+  //     camera.position.sub(_v);
+  //   });
+  // }, []);
 
   useFrame(() => console.log("Position: ", camera));
 
@@ -50,7 +52,11 @@ function Controls() {
       maxPolarAngle={1.5}
       minPolarAngle={0.9}
       maxDistance={300}
-      target={[0, 10, 45]}
+      // For College Entrance
+      // target={[0, 10, 45]}
+
+      // For Main Gate
+      target={[290, 60, 320]}
     />
   );
 }
@@ -158,12 +164,20 @@ function Box({ history }) {
 }
 
 const ThreeContainer = ({ loading, setLoading }) => {
+  // College Entrance
+  // const desktopPosition = [
+  //   -123.87768535864012, 25.090302017270139, 40.82892664461246,
+  // ];
+  // const mobilePosition = [
+  //   -205.30563025632847, 37.090302017270098, 38.437748336675426,
+  // ];
+  // {x: , y: , z: }
   const desktopPosition = [
-    -123.87768535864012, 25.090302017270139, 40.82892664461246,
+    282.32480397411064, 55.288937294745935, 936.8799539427686,
   ];
-  const mobilePosition = [
-    -205.30563025632847, 37.090302017270098, 38.437748336675426,
-  ];
+  // const mobilePosition = [
+  //   -205.30563025632847, 37.090302017270098, 38.437748336675426,
+  // ];
   return (
     <>
       <div className="canvaDiv canvaAfter">
@@ -176,7 +190,8 @@ const ThreeContainer = ({ loading, setLoading }) => {
           camera={{
             fov: 60,
             position:
-              window.innerWidth > 720 ? desktopPosition : mobilePosition,
+              // window.innerWidth > 720 ? desktopPosition : mobilePosition,
+              desktopPosition,
 
             // lookAt: [0, 0, 30],
           }}
@@ -636,6 +651,7 @@ const ThreeContainer = ({ loading, setLoading }) => {
               far={10} // Focal distance (default=10)
               resolution={256} // Rendertarget resolution (default=256)
             />
+            {/* <Model2 /> */}
 
             <Controls />
           </Physics>
