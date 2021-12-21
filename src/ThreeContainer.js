@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 
 // Three imports
 import { Physics } from "@react-three/cannon";
-import { ContactShadows, MapControls, softShadows } from "@react-three/drei";
+import { MapControls } from "@react-three/drei";
 import { Sky, Cloud } from "@react-three/drei";
 
 // import Model2 from "./Followpathdemo";
@@ -18,13 +18,6 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import CameraControls from "camera-controls";
 
 CameraControls.install({ THREE });
-softShadows({
-  frustum: 3.75, // Frustum width (default: 3.75) must be a float
-  size: 0.005, // World size (default: 0.005) must be a float
-  near: 9.5, // Near plane (default: 9.5) must be a float
-  samples: 17, // Samples (default: 17) must be a int
-  rings: 11, // Rings (default: 11) must be a int
-});
 
 function Controls() {
   const camera = useThree((state) => state.camera);
@@ -41,8 +34,6 @@ function Controls() {
   //     camera.position.sub(_v);
   //   });
   // }, []);
-
-  useFrame(() => console.log("Position: ", camera));
 
   return (
     <MapControls
@@ -182,11 +173,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
     <>
       <div className="canvaDiv canvaAfter">
         <Canvas
-          shadowMap
-          frameloop="demand"
-          // mode="concurrent"
-
-          shadows
           camera={{
             fov: 60,
             position:
@@ -195,14 +181,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
 
             // lookAt: [0, 0, 30],
           }}
-          // onCreated={({ camera }) => {
-          //   camera.lookAt(
-          //     -103.87768535864012,
-          //     25.090302017270139,
-          //     100.82892664461246
-          //   );
-          //   camera.rotation.z = Math.PI;
-          // }}
         >
           {/*   // ctor3 {x: , y: , z:  */}
           <color attach="background" args={["#89253e", "#3a6186"]} />
@@ -598,7 +576,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
 
           {/** Test lights */}
           <pointLight
-            castShadow
             intensity={5}
             position={[25, 10, 225]}
             distance={250}
@@ -606,7 +583,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
           />
 
           <pointLight
-            castShadow
             intensity={4}
             position={[170, 10, 125]}
             distance={150}
@@ -614,7 +590,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
           />
 
           <pointLight
-            castShadow
             intensity={4}
             position={[305, 10, 205]}
             distance={150}
@@ -622,7 +597,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
           />
 
           <pointLight
-            castShadow
             intensity={5}
             position={[305, 10, 505]}
             distance={250}
@@ -630,7 +604,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
           />
 
           <pointLight
-            castShadow
             intensity={4}
             position={[190, 10, -10]}
             distance={150}
@@ -638,7 +611,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
           />
 
           <pointLight
-            castShadow
             intensity={9}
             position={[190, 400, -10]}
             distance={700}
@@ -648,19 +620,9 @@ const ThreeContainer = ({ loading, setLoading }) => {
           {/* College Straight Line */}
           {/* Street Lights */}
 
-          {/* <RectArealightWithHelper /> */}
           <Physics>
             <Model setLoading={setLoading} />
             {/* <Box /> */}
-            <ContactShadows
-              opacity={1}
-              width={1}
-              height={1}
-              blur={1} // Amount of blur (default=1)
-              far={10} // Focal distance (default=10)
-              resolution={256} // Rendertarget resolution (default=256)
-            />
-            {/* <Model2 /> */}
 
             <Controls />
           </Physics>
