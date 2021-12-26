@@ -8,7 +8,7 @@ import { Sky, Cloud } from "@react-three/drei";
 // import Model2 from "./Followpathdemo";
 
 // import Model from "./Compressed_newcollege";
-import Model from "./Compressed_complete";
+import Model from "./Compressed_almostFinal";
 
 // Styles
 import "./ThreeContainer.scss";
@@ -622,6 +622,7 @@ const ThreeContainer = ({ loading, setLoading }) => {
 
           <Physics>
             <Model setLoading={setLoading} />
+            {/* <Sky /> */}
             {/* <Box /> */}
 
             <Controls />
