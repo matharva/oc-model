@@ -49,7 +49,7 @@ function Controls() {
   return (
     <MapControls
       ref={controlsRef}
-      enableZoom={false}
+      enableZoom={true}
       enableRotate={true}
       maxPolarAngle={1.5}
       minPolarAngle={0.9}
