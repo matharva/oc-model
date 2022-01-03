@@ -23,17 +23,28 @@ function Controls() {
   const camera = useThree((state) => state.camera);
   const controlsRef = useRef();
 
-  // useEffect(() => {
-  //   var minPan = new THREE.Vector3(-100, -2, -300);
-  //   var maxPan = new THREE.Vector3(500, 2, 400);
-  //   var _v = new THREE.Vector3();
-  //   controlsRef.current.addEventListener("change", function () {
-  //     _v.copy(this.target);
-  //     this.target.clamp(minPan, maxPan);
-  //     _v.sub(this.target);
-  //     camera.position.sub(_v);
-  //   });
-  // }, []);
+  useFrame(({ camera }) => {
+    console.log(camera.position);
+  });
+
+  useEffect(() => {
+    var minPan = new THREE.Vector3(-200, -2, -600);
+    var maxPan = new THREE.Vector3(500, 2, 400);
+    var _v = new THREE.Vector3();
+    controlsRef.current.addEventListener("change", function () {
+      _v.copy(this.target);
+      this.target.clamp(minPan, maxPan);
+      _v.sub(this.target);
+      camera.position.sub(_v);
+    });
+  }, []);
+  const roadDValue = [220, -10, 180];
+  const roadMValue = [220, 0, 180];
+
+  const desktopValues = [290, 0, 300];
+  const mobileValues = [270, 100, 360];
+  const target = window.innerWidth > 720 ? desktopValues : mobileValues;
+  // const target = window.innerWidth > 720 ? roadDValue : roadMValue;
 
   return (
     <MapControls
@@ -47,7 +58,7 @@ function Controls() {
       // target={[0, 10, 45]}
 
       // For Main Gate
-      target={[290, 0, 320]}
+      target={target}
     />
   );
 }
@@ -164,11 +175,13 @@ const ThreeContainer = ({ loading, setLoading }) => {
   // ];
   // {x: , y: , z: }
   const desktopPosition = [
-    282.32480397411064, 125.288937294745935, 936.8799539427686,
+    // 282.32480397411064, 125.288937294745935, 936.8799539427686,
+    240.32480397411064, 5.288937294745935, 750.8799539427686,
   ];
-  // const mobilePosition = [
-  //   -205.30563025632847, 37.090302017270098, 38.437748336675426,
-  // ];
+  const mobilePosition = [
+    240.32480397411064, 105.288937294745935, 950.8799539427686,
+  ];
+
   return (
     <>
       <div className="canvaDiv canvaAfter">
@@ -176,8 +189,8 @@ const ThreeContainer = ({ loading, setLoading }) => {
           camera={{
             fov: 60,
             position:
-              // window.innerWidth > 720 ? desktopPosition : mobilePosition,
-              desktopPosition,
+              window.innerWidth > 720 ? desktopPosition : mobilePosition,
+            // desktopPosition,
 
             // lookAt: [0, 0, 30],
           }}
@@ -228,18 +241,30 @@ const ThreeContainer = ({ loading, setLoading }) => {
             distance={20}
             color={"#ffe692"}
           />
+          <pointLight
+            intensity={2}
+            position={[-100, 10, 80]}
+            distance={70}
+            color={"#FFC0CB"}
+          />
+          <pointLight
+            intensity={2}
+            position={[-100, 10, 0]}
+            distance={70}
+            color={"#FFC0CB"}
+          />
           {/* Sabhagruha */}
 
           {/*  /////////////////////////// EVENTS //////////////////////////////////////*/}
           {/* Street Lights */}
 
           {/* College Right */}
-          {/* <pointLight
+          <pointLight
             intensity={2}
-            position={[60, 10, -70]}
+            position={[265, 20, 65]}
             distance={100}
             color={"#ffe692"}
-          /> */}
+          />
           {/* <pointLight
             intensity={2}
             position={[10, 10, -70]}
