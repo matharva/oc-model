@@ -19,6 +19,12 @@ import CameraControls from "camera-controls";
 
 CameraControls.install({ THREE });
 
+const roadDValue = [220, 4, 180];
+const roadMValue = [220, 0, 180];
+
+const desktopValues = [290, 0, 300];
+const mobileValues = [270, 100, 360];
+
 function Controls() {
   const camera = useThree((state) => state.camera);
   const controlsRef = useRef();
@@ -38,11 +44,7 @@ function Controls() {
       camera.position.sub(_v);
     });
   }, []);
-  const roadDValue = [220, -10, 180];
-  const roadMValue = [220, 0, 180];
 
-  const desktopValues = [290, 0, 300];
-  const mobileValues = [270, 100, 360];
   const target = window.innerWidth > 720 ? desktopValues : mobileValues;
   // const target = window.innerWidth > 720 ? roadDValue : roadMValue;
 
@@ -200,7 +202,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
           {/* <directionalLight position={[1, 1, 1]} color="#ad0071" />
           <directionalLight position={[-1, -1, -1]} color="#ffd738" /> */}
           {/* <fog attach="fog" args={["#ff6161", 0.002, 1000]} /> */}
-
           {/* <ambientLight intensity={1} color={"#ffe692"} /> */}
           {/*  /////////////////////////// EVENTS //////////////////////////////////////*/}
           {/* IPL  */}
@@ -218,7 +219,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
             color={"#ffe692"}
           /> */}
           {/* VSM */}
-
           {/* OCL  */}
           {/* <pointLight
             intensity={1}
@@ -227,7 +227,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
             color={"red"}
           /> */}
           {/* OCL  */}
-
           {/* Sabhagruha */}
           <pointLight
             intensity={1}
@@ -254,10 +253,8 @@ const ThreeContainer = ({ loading, setLoading }) => {
             color={"#FFC0CB"}
           />
           {/* Sabhagruha */}
-
           {/*  /////////////////////////// EVENTS //////////////////////////////////////*/}
           {/* Street Lights */}
-
           {/* College Right */}
           <pointLight
             intensity={2}
@@ -278,7 +275,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
             color={"#ffe692"}
           /> */}
           {/* College Right */}
-
           {/* College Front */}
           {/* <pointLight
             intensity={2}
@@ -305,7 +301,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
             color={"#ffe692"}
           /> */}
           {/* College Front */}
-
           {/* College Left */}
           {/* <pointLight
             intensity={2}
@@ -332,7 +327,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
             color={"#ffe692"}
           /> */}
           {/* College Left */}
-
           {/* Cabin and gate */}
           {/* <pointLight
             intensity={3}
@@ -371,16 +365,13 @@ const ThreeContainer = ({ loading, setLoading }) => {
             color={"#ffe692"}
           /> */}
           {/* Cabin and gate */}
-
           {/** College Building behind concert */}
-
           {/* <pointLight
             intensity={2}
             position={[100, 20, -150]}
             distance={50}
             color={"#ffe692"}
           /> */}
-
           {/** Mandir Right Lamps */}
           {/** test wala */}
           {/* <pointLight
@@ -389,16 +380,13 @@ const ThreeContainer = ({ loading, setLoading }) => {
             distance={100}
             color={"red"}
           /> */}
-
           {/* Mandir Right Concert*/}
-
           {/* <pointLight
             intensity={2}
             position={[300, 20, -150]}
             distance={50}
             color={"red"}
           /> */}
-
           {/**test wala */}
           {/* <pointLight
             intensity={2}
@@ -458,9 +446,7 @@ const ThreeContainer = ({ loading, setLoading }) => {
             distance={100}
             color={"lightgreen"}
           /> */}
-
           {}
-
           {/* Mandir Straight */}
           {/* <pointLight
             intensity={2}
@@ -486,7 +472,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
             distance={100}
             color={"#ffe692"}
           /> */}
-
           {/* <pointLight
             intensity={2}
             position={[230, 10, 270]}
@@ -512,7 +497,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
             color={"#ffe692"}
           /> */}
           {/* Mandir Straight */}
-
           {/* Mandir Left */}
           {/* <pointLight
             intensity={2}
@@ -533,7 +517,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
             color={"#ffe692"}
           /> */}
           {/* Mandir Left */}
-
           {/* College Straight Line */}
           {/* <pointLight
             intensity={2}
@@ -598,7 +581,6 @@ const ThreeContainer = ({ loading, setLoading }) => {
             distance={100}
             color={"#ffe692"}
           />
-
           {/** Test lights */}
           <pointLight
             intensity={5}
@@ -606,49 +588,59 @@ const ThreeContainer = ({ loading, setLoading }) => {
             distance={250}
             color={"#ffe692"}
           />
-
           <pointLight
             intensity={4}
             position={[170, 10, 125]}
             distance={150}
             color={"#0357a6"}
           />
-
           <pointLight
             intensity={4}
             position={[305, 10, 205]}
             distance={150}
             color={"#ffe692"}
           />
-
           <pointLight
             intensity={5}
             position={[305, 10, 505]}
             distance={250}
             color={"#0357a6"}
           />
-
           <pointLight
             intensity={4}
             position={[190, 10, -10]}
             distance={150}
             color={"#ffe692"}
           />
-
           <pointLight
             intensity={9}
             position={[190, 400, -10]}
             distance={700}
             color={"#0357a6"}
           />
-
+          <spotLight
+            intensity={10}
+            position={[
+              295.22985671884646, 50.22711480331768, 518.0720401844883,
+            ]}
+            distance={50}
+            color={"#FFA500"}
+            angle={Math.PI}
+          />
+          <spotLight
+            intensity={10}
+            position={[
+              245.22985671884646, 50.22711480331768, 518.0720401844883,
+            ]}
+            angle={Math.PI}
+            distance={50}
+            color={"#A020F0"}
+          />
+          {/* 265.22985671884646, y: , z:  */}
           {/* College Straight Line */}
           {/* Street Lights */}
-
           <Physics>
             <Model setLoading={setLoading} />
-            {/* <Sky /> */}
-            {/* <Box /> */}
 
             <Controls />
           </Physics>
