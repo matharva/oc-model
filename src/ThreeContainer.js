@@ -636,6 +636,29 @@ const ThreeContainer = ({ loading, setLoading }) => {
             distance={50}
             color={"#A020F0"}
           />
+          <pointLight
+            intensity={3}
+            position={[250.22985671884646, 50, 400.0720401844883]}
+            // angle={Math.PI}
+            distance={150}
+            color={"#ffe692"}
+          />
+          <pointLight
+            intensity={3}
+            position={[290.22985671884646, 50, 490.0720401844883]}
+            // angle={Math.PI}
+            distance={150}
+            color={"#ffe692"}
+          />
+          {/* <pointLight
+            intensity={10}
+            position={[
+              245.22985671884646, 50.22711480331768, 518.0720401844883,
+            ]}
+            angle={Math.PI}
+            distance={50}
+            color={"#A020F0"}
+          /> */}
           {/* 265.22985671884646, y: , z:  */}
           {/* College Straight Line */}
           {/* Street Lights */}
